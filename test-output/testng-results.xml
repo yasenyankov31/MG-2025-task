@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-08-07T13:55:07 EEST" name="Default suite" finished-at="2023-08-07T13:55:25 EEST" duration-ms="17373">
+    <groups>
+    </groups>
+    <test started-at="2023-08-07T13:55:07 EEST" name="Default test" finished-at="2023-08-07T13:55:25 EEST" duration-ms="17373">
+      <class name="com.react_tests.ReactUiTest">
+        <test-method is-config="true" signature="openBrowser()[pri:0, instance:com.react_tests.ReactUiTest@6a47b187]" started-at="2023-08-07T13:55:07 EEST" name="openBrowser" finished-at="2023-08-07T13:55:10 EEST" duration-ms="2370" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openBrowser -->
+        <test-method signature="createUser()[pri:0, instance:com.react_tests.ReactUiTest@6a47b187]" started-at="2023-08-07T13:55:10 EEST" name="createUser" finished-at="2023-08-07T13:55:17 EEST" duration-ms="7588" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createUser -->
+        <test-method signature="editUser()[pri:0, instance:com.react_tests.ReactUiTest@6a47b187]" started-at="2023-08-07T13:55:17 EEST" name="editUser" finished-at="2023-08-07T13:55:24 EEST" duration-ms="7260" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- editUser -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:com.react_tests.ReactUiTest@6a47b187]" started-at="2023-08-07T13:55:24 EEST" name="closeBrowser" finished-at="2023-08-07T13:55:25 EEST" duration-ms="123" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- com.react_tests.ReactUiTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

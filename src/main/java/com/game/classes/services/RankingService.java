@@ -24,6 +24,8 @@ import com.game.classes.models.game.RankingPerGamer;
 public class RankingService {
 	@Autowired
 	private CompletedGameRepository completedGameRepository;
+	@Autowired
+	private RankingRepository rankingRepository;
 
 	@Autowired
 	private UserRepository userRepository;
@@ -45,7 +47,7 @@ public class RankingService {
 		UserData user = checkIfUserExist(username);
 		CompletedGame completedGame = new CompletedGame(gameResultState.toString(), game);
 		RankingPerGamer statistic = new RankingPerGamer(user, completedGame);
-		// rankingRepository.save(statistic);
+		rankingRepository.save(statistic);
 		completedGame.setRankingPerGamer(statistic);
 		completedGameRepository.save(completedGame);
 	}

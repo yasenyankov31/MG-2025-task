@@ -51,36 +51,37 @@ public class RankingService {
 	}
 
 	public RankingData topTenOfTheMonth() {
-		RankingData allTimeData = new RankingData();
-
-		Calendar calendar = Calendar.getInstance();
-		calendar.add(Calendar.YEAR, 10);
-		Date thirtyDaysBefore = calendar.getTime();
-		Pageable pageable = PageRequest.of(0, 0);
-
-		completedGameRepository.findTop10(thirtyDaysBefore, pageable).forEach(item -> {
-			allTimeData.getUserNames().add(item.getUsername());
-			allTimeData.getWinCounts().add(item.getWinCount());
-		});
-
-		return allTimeData;
-	}
-
-	public RankingData topTenOfAllTime() {
 		RankingData monthData = new RankingData();
-
+	
 		Calendar calendar = Calendar.getInstance();
-		calendar.set(Calendar.DAY_OF_MONTH, 1);
+		calendar.set(Calendar.DAY_OF_MONTH, 0);
+		Date startOfMonth = calendar.getTime();
 
-		Date date = calendar.getTime();
 		Pageable pageable = PageRequest.of(0, 10);
-		completedGameRepository.findTop10(date, pageable).forEach(item -> {
+	
+		completedGameRepository.findTop10(startOfMonth, pageable).forEach(item -> {
 			monthData.getUserNames().add(item.getUsername());
 			monthData.getWinCounts().add(item.getWinCount());
 		});
-
+	
 		return monthData;
 	}
+	
+	public RankingData topTenOfAllTime() {
+		RankingData allTimeData = new RankingData();
+	
+		Date veryOldDate = new Date(0);
+	
+		Pageable pageable = PageRequest.of(0, 10);
+	
+		completedGameRepository.findTop10(veryOldDate, pageable).forEach(item -> {
+			allTimeData.getUserNames().add(item.getUsername());
+			allTimeData.getWinCounts().add(item.getWinCount());
+		});
+	
+		return allTimeData;
+	}
+	
 
 	public Page<UserRankData> getUserInfo(String username, Integer pageNum) {
 		if (pageNum == null) {

@@ -117,11 +117,8 @@ public class GameRestApiController {
 		GameDto gameDto = gameFactory.fromEntity(game);
 		boolean isCompletedGame = gameService.checkIfGameIsCompleted(gameId);
 		gameDto.setCompletedGame(isCompletedGame);
-		if (isCompletedGame) {
-			gameDto.setOriginalWord(null);
-		}
-		GameDto responseDto = new GameDto();
-		return ResponseEntity.ok().body(responseDto);
+
+		return ResponseEntity.ok().body(gameDto);
 	}
 
 	@ExceptionHandler(IllegalArgumentException.class)

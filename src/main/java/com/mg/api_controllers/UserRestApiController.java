@@ -163,6 +163,8 @@ public class UserRestApiController {
 			throw new IllegalArgumentException("User doesn't exist!");
 		}
 
+		userService.deleteUser(userId);
+		
 		SuccessResponse response = new SuccessResponse("deleteUser", "User deleted successfully!");
 
 		return ResponseEntity.ok().body(response);

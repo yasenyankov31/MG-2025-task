@@ -36,4 +36,7 @@ public class CompletedGame {
 		Calendar today = Calendar.getInstance();
 		this.finishDate = today.getTime();
 	}
+	public void setRankingPerGamer(RankingPerGamer rpg) {
+		this.rankingPerPower = rpg;
+	}
 }

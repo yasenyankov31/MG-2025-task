@@ -86,19 +86,19 @@ public class UserRestApiController {
 	@GetMapping("/user-profile")
 	@Operation(summary = "Get user game statistics and played games", description = "Returns  statistic of a user profile.")
 	public ResponseEntity<UserProfileDto> userProfile(@RequestParam(required = true) String username) {
-		if (userService.checkIfUserExist(username)) {
+		if (!userService.checkIfUserExist(username)) {
 			throw new IllegalArgumentException("Username doesn't exist!");
 		}
 
 		int winCount = 0;
-		int lossCount = 10;
+		int lossCount = 0;
 		int prevWinCount = 0;
 		List<Integer> statusValues = new ArrayList<>();
 
 		Page<UserRankData> userRankProgressAllTime = rankingService.getUserInfo(username, null);
 
 		for (UserRankData rankData : userRankProgressAllTime) {
-			if (rankData.getGameStatus().equals(GameStatus.ONGOING.toString())) {
+			if (rankData.getGameStatus().equals(GameStatus.WON.toString())) {
 				winCount++;
 				statusValues.add(++prevWinCount);
 			} else {

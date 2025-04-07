@@ -33,4 +33,5 @@ public class RankingPerGamer {
 		this.userData = userData;
 		this.completedGames.add(completedGame);
 	}
+	public RankingPerGamer() {}
 }

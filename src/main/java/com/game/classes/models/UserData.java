@@ -61,4 +61,7 @@ public class UserData {
 		this.age = age;
 		this.role = role;
 	}
+	public void setUsername(string username) {
+		this.username = username;
+	}
 }

@@ -9,7 +9,7 @@ public interface UserRankData {
 
 	String getLettersUsed();
 
-	int getAttemptsLeft();
+	Integer getAttemptsLeft();
 
 	Date getStartDate();
 }

@@ -6,7 +6,7 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-public class RankingData {
+public class 	RankingData {
 	private List<String> userNames = new ArrayList<>();
-	private List<Integer> winCounts = new ArrayList<>();
+	private List<Long> winCounts = new ArrayList<>();
 }

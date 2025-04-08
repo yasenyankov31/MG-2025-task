@@ -19,6 +19,7 @@ import com.game.classes.models.game.CompletedGame;
 import com.game.classes.models.game.Game;
 import com.game.classes.models.game.RankingData;
 import com.game.classes.models.game.RankingPerGamer;
+import com.game.classes.interfaces.model.TopPlayerStats;
 
 @Service
 public class RankingService {
@@ -56,11 +57,10 @@ public class RankingService {
 		RankingData monthData = new RankingData();
 	
 		Calendar calendar = Calendar.getInstance();
-		calendar.set(Calendar.DAY_OF_MONTH, 0);
+		calendar.set(Calendar.DAY_OF_MONTH, 1);
 		Date startOfMonth = calendar.getTime();
 
 		Pageable pageable = PageRequest.of(0, 10);
-	
 		completedGameRepository.findTop10(startOfMonth, pageable).forEach(item -> {
 			monthData.getUserNames().add(item.getUsername());
 			monthData.getWinCounts().add(item.getWinCount());
@@ -75,7 +75,6 @@ public class RankingService {
 		Date veryOldDate = new Date(0);
 	
 		Pageable pageable = PageRequest.of(0, 10);
-	
 		completedGameRepository.findTop10(veryOldDate, pageable).forEach(item -> {
 			allTimeData.getUserNames().add(item.getUsername());
 			allTimeData.getWinCounts().add(item.getWinCount());
@@ -87,7 +86,7 @@ public class RankingService {
 
 	public Page<UserRankData> getUserInfo(String username, Integer pageNum) {
 		if (pageNum == null) {
-			return completedGameRepository.userProfileData(username, null);
+			return completedGameRepository.userProfileData(username, PageRequest.of(0, 5));
 		}
 		Pageable pageable = PageRequest.of(pageNum, 5);
 

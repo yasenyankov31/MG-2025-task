@@ -5,9 +5,9 @@ import java.sql.Date;
 public interface TopPlayerStats {
 	String getUsername();
 
-	int getWinCount();
+	Long getWinCount();
 
-	int getLostCount();
+	Long getLostCount();
 
 	Date getFinishDate();
 }

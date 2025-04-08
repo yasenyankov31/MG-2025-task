@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
+import com.game.classes.models.GameStatus;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,6 +98,14 @@ public class GameService {
 
 		game.setGuessedWord(newGuessedWord.toString());
 		game.setAttemptsLeft(attemptsLeft);
+
+		if (game.getGuessedWord().equals(game.getWord())) {
+			game.setStatus(GameStatus.WON);
+		} else if (attemptsLeft == 0) {
+			game.setStatus(GameStatus.LOST);
+		} else {
+			game.setStatus(GameStatus.ONGOING);
+		}
 		gameRepository.save(game);
 
 		return game;

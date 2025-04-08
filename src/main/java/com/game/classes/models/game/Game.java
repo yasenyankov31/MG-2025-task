@@ -25,6 +25,7 @@ public class Game {
 	private int attemptsLeft;
 	private int wordNum;
 	private Date date;
+	private GameStatus status = GameStatus.ONGOING;
 
 	@OneToOne(mappedBy = "game")
 	private CompletedGame completedGame;
@@ -114,6 +115,13 @@ public class Game {
 		this.userGame = userGame;
 	}
 
+	public GameStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(GameStatus status) {
+		this.status = status;
+	}
 	public GameStatus getGameState() {
 		if (attemptsLeft == 0) {
 			return GameStatus.LOST;
